@@ -1,4 +1,4 @@
-package com.thoughtmechanix.licenses.controllers;
+package com.books.registrations.controllers;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/v/organizations/{organizationId}/licenses")
-public class LicenseServiceController {
+@RequestMapping(value = "/v/libraries/{libraryId}/registerId")
+public class BookRegisterServiceController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	String getLicense(@PathVariable("organizationId")String organizationId) {
-		return organizationId;
+	String getLicense(@PathVariable("libraryId")String libraryId) {
+		return libraryId;
 	}
 
 }

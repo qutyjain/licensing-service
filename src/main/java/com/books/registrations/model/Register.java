@@ -4,10 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "register")
 public class Register {
+	
+	@Id
+	@Column(name = "register_id", nullable = false)
+	private String registerId;
 
 	@Column(name = "register_type", nullable = false)
 	private String registerType;
@@ -18,9 +23,13 @@ public class Register {
 	@Column(name = "library_id", nullable = false)
 	private String libraryId;
 
-	@Id
-	@Column(name = "register_id", nullable = false)
-	private String registerId;
+	@Transient
+	private String libraryContact;
+
+	@Transient
+	private String libraryRegion;
+
+
 
 	public String getRegisterId() {
 		return registerId;
@@ -59,6 +68,22 @@ public class Register {
 		return this;
 	}
 
+	public String getLibraryContact() {
+		return libraryContact;
+	}
+
+	public void setLibraryContact(String libraryContact) {
+		this.libraryContact = libraryContact;
+	}
+
+	public String getLibraryRegion() {
+		return libraryRegion;
+	}
+
+	public void setLibraryRegion(String libraryRegion) {
+		this.libraryRegion = libraryRegion;
+	}
+
 	public Register withRegisterId(String registerId) {
 		this.setrRegisterId(registerId);
 		return this;
@@ -71,6 +96,16 @@ public class Register {
 
 	public Register withRegisterType(String registerType) {
 		this.setRegisterType(registerType);
+		return this;
+	}
+
+	public Register withLibraryContact(String libraryContact) {
+		this.setLibraryContact(libraryContact);
+		return this;
+	}
+
+	public Register withLibraryRegion(String libraryRegion) {
+		this.setLibraryRegion(libraryRegion);
 		return this;
 	}
 

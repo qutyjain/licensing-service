@@ -9,6 +9,9 @@ import com.books.registrations.model.Register;
 
 @Repository
 public interface RegisterRepository extends CrudRepository<Register, String> {
-public List<Register> getBookByRegisterId(String registerId);
+	
+	public List<Register> getBookByRegisterId(String registerId);
+	
+	public Register findByregisterId(String registerId);
 }
 	

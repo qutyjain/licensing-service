@@ -10,6 +10,7 @@ import com.books.registrations.clients.LibraryDiscoveryClient;
 import com.books.registrations.model.Library;
 import com.books.registrations.model.Register;
 import com.books.registrations.repository.RegisterRepository;
+import com.books.registrations.utils.UserContextHolder;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service
@@ -52,6 +53,8 @@ public class RegisterService {
 	}
 
 	private Library getLibraryInfo(String libraryId) {
+		System.out.println("Correlation Id:"
+				+ UserContextHolder.getContext().getCorrelationId());
 		return libraryDiscoveryClient.getLibrary(libraryId);
 	}
 

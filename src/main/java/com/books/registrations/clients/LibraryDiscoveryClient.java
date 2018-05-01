@@ -16,21 +16,23 @@ public class LibraryDiscoveryClient {
 
 	@Autowired
 	private DiscoveryClient discoveryClient;
+	@Autowired
+	RestTemplate restTemplate;
 
 	public Library getLibrary(String libraryId) {
-		RestTemplate restTemplate = new RestTemplate();
+		// RestTemplate restTemplate = new RestTemplate();
 		List<ServiceInstance> instances = this.discoveryClient
 				.getInstances("libraryservice");
 		if (instances.size() == 0)
 			return null;
-		String serviceUri = String.format("%s/v/libraries/%s/library", instances
-				.get(0).getUri().toString(), libraryId);
+		else {
+			ResponseEntity<Library> response = restTemplate.exchange(
+					"http://libraryservice/v/libraries/{libraryId}/library",
+					org.springframework.http.HttpMethod.GET, null,
+					Library.class, libraryId);
+			return response.getBody();
 
-		ResponseEntity<Library> response = restTemplate.exchange(serviceUri,
-				org.springframework.http.HttpMethod.GET, null, Library.class);
-
-		return response.getBody();
-
+		}
 	}
 
 }

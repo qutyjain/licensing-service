@@ -5,19 +5,25 @@ public class UserContext {
 	public static final String AUTH_TOKEN = "tmx-auth-token";
 	public static final String USER_ID = "tmx-user-id";
 	public static final String ORG_ID = "tmx-org-id";
-	
+
 	private String correlationId;
 	private String authToken;
 	private String userId;
 	private String orgId;
-	
-	
+
 	public String getCorrelationId() {
 		return correlationId;
 	}
 
 	public void setCorrelationId(String correlationId) {
 		this.correlationId = correlationId;
+		// RequestContext ctx = RequestContext.getCurrentContext();
+		// if (ctx.getRequest()!= null &&
+		// ctx.getRequest().getHeader(CORRELATION_ID) != null)
+		// this.correlationId = ctx.getRequest().getHeader(CORRELATION_ID);
+		// else
+		// this.correlationId = ctx.getZuulRequestHeaders()
+		// .get(CORRELATION_ID);
 	}
 
 	public String getAuthToken() {

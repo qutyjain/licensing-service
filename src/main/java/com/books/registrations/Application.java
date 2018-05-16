@@ -17,11 +17,11 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 @EnableDiscoveryClient
 @EnableFeignClients
-class Application {
+public class Application {
 
 	@LoadBalanced
 	@Bean
-	RestTemplate getRestTemplate() {
+	public RestTemplate getRestTemplate() {
 		RestTemplate template = new RestTemplate();
 		return template;
 	}
